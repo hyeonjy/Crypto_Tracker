@@ -4,7 +4,7 @@ import Coins from "./routes/Coins";
 
 function Router() {
   return (
-    <HashRouter basename={"/"}>
+    <HashRouter>
       <Switch>
         <Route path="/">
           <Coins />
