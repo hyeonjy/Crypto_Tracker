@@ -4,6 +4,14 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { fetchCoins } from "../api";
 import { Helmet } from "react-helmet";
+import { useRecoilState, useSetRecoilState } from "recoil";
+import { isDarkAtom } from "../atoms";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  IconDefinition,
+  faToggleOff,
+  faToggleOn,
+} from "@fortawesome/free-solid-svg-icons";
 
 const Container = styled.div`
   padding: 0px 20px;
@@ -16,13 +24,14 @@ const Header = styled.header`
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
 `;
 
 const CoinsList = styled.ul``;
 
 const Coin = styled.li`
   background-color: white;
-  color: ${(props) => props.theme.bgColor};
+  color: ${(props) => props.theme.textColor};
   border-radius: 15px;
   margin-bottom: 10px;
   a {
@@ -64,9 +73,19 @@ interface ICoin {
   type: string;
 }
 
+interface ICoinsProps {}
+
+const ToggleBox = styled(FontAwesomeIcon)`
+  font-size: 30px;
+  position: absolute;
+  right: 25px;
+  color: ${(props) => props.color};
+`;
+
 function Coins() {
+  const [darkAtom, setDarkAtom] = useRecoilState(isDarkAtom);
+  const toggleDarkAtom = () => setDarkAtom((prev) => !prev);
   const { isLoading, data } = useQuery<ICoin[]>(["allCoins"], fetchCoins);
-  const [theme, setTheme] = useState(false);
   return (
     <Container>
       <Helmet>
@@ -75,6 +94,11 @@ function Coins() {
 
       <Header>
         <Title>코인</Title>
+        <ToggleBox
+          onClick={toggleDarkAtom}
+          icon={darkAtom ? faToggleOn : faToggleOff}
+          color={darkAtom ? "#0daf55" : "gray"}
+        />
       </Header>
       {isLoading ? (
         <Loader>"Loading..."</Loader>
