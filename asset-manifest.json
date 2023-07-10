@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "https://hyeonjy.github.io/Crypto_Tracker/static/js/main.c901460f.js",
+    "main.js": "https://hyeonjy.github.io/Crypto_Tracker/static/js/main.a506ede6.js",
     "index.html": "https://hyeonjy.github.io/Crypto_Tracker/index.html",
-    "main.c901460f.js.map": "https://hyeonjy.github.io/Crypto_Tracker/static/js/main.c901460f.js.map"
+    "main.a506ede6.js.map": "https://hyeonjy.github.io/Crypto_Tracker/static/js/main.a506ede6.js.map"
   },
   "entrypoints": [
-    "static/js/main.c901460f.js"
+    "static/js/main.a506ede6.js"
   ]
 }
